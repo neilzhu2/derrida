@@ -110,17 +110,17 @@ d3.csv("data/combined.csv", function(data) {
 //  https://gist.github.com/hrbrmstr/7700364
 //  https://bl.ocks.org/zanarmstrong/0b6276e033142ce95f7f374e20f1c1a7
 
-        // var svgLegned4 = d3.select(".legend4")
+        // var svgLegned4 = d3.select(".legend")
         //     .append("svg")
         //     .attr("width", width)
-        //     // .attr("height", height - 50)
+        //     .attr("height", height - 50)
         
         // var dataL = 0;
         // var offset = 80;
         
         // var legend4 = svgLegned4.selectAll('.legend')
         //     // .data(legendVals2)
-        //     .data(cValue)
+        //     .data()
 
         //     .enter().append('g')
         //     .attr("class", "legend")
@@ -136,10 +136,10 @@ d3.csv("data/combined.csv", function(data) {
         // })
         
         // legend.append('rect')
-        //     // .attr("x", 0)
-        //     // .attr("y", 0)
-        //     // .attr("width", 10)
-        //     // .attr("height", 10)
+        //     .attr("x", 0)
+        //     .attr("y", 0)
+        //     .attr("width", 10)
+        //     .attr("height", 10)
         //     .style("fill", function (d, i) {
         //     return color(i)
         // })
@@ -161,39 +161,41 @@ d3.csv("data/combined.csv", function(data) {
 // this produced 5 black boxes that are labeled abcde
 
 //     // to be used for legend.append("text")
-    var commasFormatter = d3.format(",")
+//     var commasFormatter = d3.format(",")
 
 
 // append legend to page
     var legendSVG = d3.select("#maplegend")
-                    .append("svg")
-                    .attr("width", width)
+            .append("svg")
+            .attr("width", width)
           
-    var ordinal = d3.scaleOrdinal()
-        .domain(["a", "b", "c", "d", "e"])
-        .range([ "rgb(153, 107, 195)", "rgb(56, 106, 197)", "rgb(93, 199, 76)", "rgb(223, 199, 31)", "rgb(234, 118, 47)"]);
+    // var ordinal = d3.scaleOrdinal()
+    //     .domain(["a", "b", "c", "d", "e"])
+    //     .range([ "rgb(153, 107, 195)", "rgb(56, 106, 197)", "rgb(93, 199, 76)", "rgb(223, 199, 31)", "rgb(234, 118, 47)"]);
 
 // build legend
     legend = legendSVG.selectAll(".lentry")
             .data(data)
             .enter()
             .append("g")
-            .attr("class","leg") 
+            // .attr("class","leg") 
 
     legend.append("rect")
             .attr("y", function(d,i) { return(i*30)})
             .attr("width","40px")
             .attr("height","50px")
 
-            .attr("fill", function(d) { return cValue(data)})
-            .attr("stroke","#7f7f7f")
+            // .attr("fill", function(d) { return cValue(data)})
+
+            .attr("fill", data.language)
+            // .attr("stroke","#7f7f7f")
             .attr("stroke-width","0.5");
             // color = d3.scaleOrdinal(d3.schemeCategory10);
        
     legend.append("text")
                 .attr("class", "legText")
                 // .text(function(d, i) { return "≤ "+commasFormatter(d.language[i]) ; })
-                .text(["a", "b", "c", "d", "e"])
+                // .text(data.language)
                 .attr("x", 45)
                 .attr("y", function(d, i) { return (40 * i) + 20 + 4; })
 
