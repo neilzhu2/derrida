@@ -3,20 +3,16 @@ body {
 }
 
 h1 {
-    color: #175498;
-    font-family: sans-serif;
+    color: blue;
 }
 
 p {
-    color: #175498;
-
+    color: rgb(103, 103, 253);
 }
 
 h3 {
-    color: #175498;
-    font-size: 26px;
-    font-family: serif;
-    line-height: 17px;
+    color: darkblue;
+    font-size: 24px;
 }
 
 .handle--custom {
@@ -24,8 +20,7 @@ h3 {
 }
 
 .main text {
-    font-size: 10px; 
-    font-family: sans-serif;
+    font: 10px sans-serif;
 }
 
 .axis line,
@@ -72,7 +67,7 @@ line.link.show {
     width: 200px;
     height: auto;
     padding: 10px;
-    background-color: rgba(235, 235, 235, 0.85);
+    background-color: white;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -80,7 +75,6 @@ line.link.show {
     -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
     pointer-events: none;
-    font-family: sans-serif;
 }
 
 
@@ -90,7 +84,7 @@ line.link.show {
 
 #tooltip p {
     margin: 0;
-    
+    font-family: Futura;
     font-size: 16px;
     line-height: 20px;
 }
@@ -110,7 +104,10 @@ line.link.show {
 }
 
 .de{
+/*https://www.color-hex.com/color-palette/67502*/
 
 }
 
-.en
+.en{
+
+}
