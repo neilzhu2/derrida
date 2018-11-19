@@ -91,23 +91,31 @@ line.link.show {
 
 
 .fr { 
-    fill: red
+    fill: #c83d32
 }
 .da { 
-    fill: purple
+    fill: #62a1a9
 }
 
 .it{
+    fill: #99af5d   
+
 }
 
 .la{
+    fill: #e6b740   
+
 }
 
 .de{
+    fill: #2b595a   
+
 /*https://www.color-hex.com/color-palette/67502*/
 
 }
 
 .en{
+    fill: pink
+
 
 }

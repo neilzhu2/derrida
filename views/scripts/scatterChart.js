@@ -163,19 +163,26 @@ d3.csv("data/combined.csv", function(data) {
 //     // to be used for legend.append("text")
 //     var commasFormatter = d3.format(",")
 
-
 // append legend to page
     var legendSVG = d3.select("#maplegend")
             .append("svg")
             .attr("width", width)
-          
-    // var ordinal = d3.scaleOrdinal()
-    //     .domain(["a", "b", "c", "d", "e"])
-    //     .range([ "rgb(153, 107, 195)", "rgb(56, 106, 197)", "rgb(93, 199, 76)", "rgb(223, 199, 31)", "rgb(234, 118, 47)"]);
+    var ordinal = d3.scaleOrdinal()
+        .domain(["a", "b", "c", "d", "e"])
+        .range([ "rgb(153, 107, 195)", "rgb(56, 106, 197)", "rgb(93, 199, 76)", "rgb(223, 199, 31)", "rgb(234, 118, 47)"]);
+
+
+    var language_data = 
+        [{language:"fr"}, 
+        {language:"da"}, 
+        {language:"de"},
+        {language:"en"},
+        {language:"la"},
+        {language:"it"}];
 
 // build legend
     legend = legendSVG.selectAll(".lentry")
-            .data(data)
+            .data(language_data)
             .enter()
             .append("g")
             // .attr("class","leg") 
@@ -183,19 +190,19 @@ d3.csv("data/combined.csv", function(data) {
     legend.append("rect")
             .attr("y", function(d,i) { return(i*30)})
             .attr("width","40px")
-            .attr("height","50px")
+            .attr("height","40px")
 
             // .attr("fill", function(d) { return cValue(data)})
 
-            .attr("fill", data.language)
-            // .attr("stroke","#7f7f7f")
+            .attr("class", function(d) {return (d.language)})
+            .attr("stroke","#7f7f7f")
             .attr("stroke-width","0.5");
             // color = d3.scaleOrdinal(d3.schemeCategory10);
        
     legend.append("text")
-                .attr("class", "legText")
-                // .text(function(d, i) { return "≤ "+commasFormatter(d.language[i]) ; })
-                // .text(data.language)
+                // .attr("class", "legText")
+                .text(function(d, i) { return "≤ "+commasFormatter(d.language[i]) ; })
+                // .text("class", function(d) {return (d.language)})
                 .attr("x", 45)
                 .attr("y", function(d, i) { return (40 * i) + 20 + 4; })
 
