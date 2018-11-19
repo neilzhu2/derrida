@@ -88,3 +88,12 @@ line.link.show {
     font-size: 16px;
     line-height: 20px;
 }
+
+
+.fr { 
+    fill: red
+}
+.gr { 
+    fill: purple
+}
+

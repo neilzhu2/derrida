@@ -85,10 +85,9 @@ d3.csv("data/combined.csv", function(data) {
         .call(yAxis)
 
     var gLinks = main
-                .append('g')
-                    .attr('class', 'link')
+        .append('g')
+            .attr('class', 'link')
                     // .attr("transform", "translate(" + margin_left + "," +  20 + ")");
-
     
     var g = main.append("svg:g"); 
     
@@ -110,15 +109,65 @@ d3.csv("data/combined.csv", function(data) {
 //  https://github.com/d3/d3-selection
 //  https://gist.github.com/hrbrmstr/7700364
 //  https://bl.ocks.org/zanarmstrong/0b6276e033142ce95f7f374e20f1c1a7
-// 
 
-    // to be used for legend.append("text")
+        // var svgLegned4 = d3.select(".legend4")
+        //     .append("svg")
+        //     .attr("width", width)
+        //     // .attr("height", height - 50)
+        
+        // var dataL = 0;
+        // var offset = 80;
+        
+        // var legend4 = svgLegned4.selectAll('.legend')
+        //     // .data(legendVals2)
+        //     .data(cValue)
+
+        //     .enter().append('g')
+        //     .attr("class", "legend")
+        //     .attr("transform", function (d, i) {
+        //      if (i === 0) {
+        //         dataL = d.length + offset 
+        //         return "translate(0,0)"
+        //     } else { 
+        //      var newdataL = dataL
+        //      dataL +=  d.length + offset
+        //      return "translate(" + (newdataL) + ",0)"
+        //     }
+        // })
+        
+        // legend.append('rect')
+        //     // .attr("x", 0)
+        //     // .attr("y", 0)
+        //     // .attr("width", 10)
+        //     // .attr("height", 10)
+        //     .style("fill", function (d, i) {
+        //     return color(i)
+        // })
+        
+        // legend.append('text')
+        //     .attr("x", 20)
+        //     .attr("y", 10)
+        // //.attr("dy", ".35em")
+        // .text(function (d, i) {
+        //     return d
+        // })
+        //     .attr("class", "textselected")
+        //     .style("text-anchor", "start")
+        //     .style("font-size", 15)
+
+
+// ###########################################################
+// commented out nobv 19 10:57am
+// this produced 5 black boxes that are labeled abcde
+
+//     // to be used for legend.append("text")
     var commasFormatter = d3.format(",")
 
 
 // append legend to page
     var legendSVG = d3.select("#maplegend")
-                    .append("svg") ;
+                    .append("svg")
+                    .attr("width", width)
           
     var ordinal = d3.scaleOrdinal()
         .domain(["a", "b", "c", "d", "e"])
@@ -132,16 +181,15 @@ d3.csv("data/combined.csv", function(data) {
             .attr("class","leg") 
 
     legend.append("rect")
-            .attr("y", function(d,i) { return(i*40)})
+            .attr("y", function(d,i) { return(i*30)})
             .attr("width","40px")
-            .attr("height","40px")
+            .attr("height","50px")
 
-            .attr("fill", function(d) { return cValue(data) ; })
+            .attr("fill", function(d) { return cValue(data)})
             .attr("stroke","#7f7f7f")
             .attr("stroke-width","0.5");
             // color = d3.scaleOrdinal(d3.schemeCategory10);
-
-            
+       
     legend.append("text")
                 .attr("class", "legText")
                 // .text(function(d, i) { return "≤ "+commasFormatter(d.language[i]) ; })
@@ -149,7 +197,10 @@ d3.csv("data/combined.csv", function(data) {
                 .attr("x", 45)
                 .attr("y", function(d, i) { return (40 * i) + 20 + 4; })
 
-     
+
+//  ###############################################################
+// commented out on friday noc
+
     // var ordinal = d3.scaleOrdinal()
     //   .domain(d.language)
     //   .range(color);
@@ -180,13 +231,15 @@ d3.csv("data/combined.csv", function(data) {
     scatters = g.selectAll("scatter-dots")
                 .data(data)
                 .enter().append("circle")
-                    .attr('class', 'reference')
+                    .attr('class', function(d) {return 'reference ' + d.language})
                     // .attr("cx", function (d) { return brushXConverter(d.page); } )
                     .attr("cx", function (d) { return brushXConverter(d.avgPos); } )
 
                     .attr("cy", function (d) { return y(d.date); } )
                     .attr("r", 8)
-                    .style("fill", function(d) { return color(cValue(d));})
+                    // .style("fill", function(d) { return color(cValue(d));})
+
+
                 .on("mouseover", function(d) {
                     div.transition()     
                         .duration(200)      
